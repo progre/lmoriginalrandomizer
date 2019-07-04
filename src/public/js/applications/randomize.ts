@@ -4,6 +4,11 @@ import {
   buildScriptDat,
   readScriptDat,
 } from '../domains/util/scriptdat/format/scriptconverter';
+import {
+  equipmentNumbers,
+  romNumbers,
+  subWeaponNumbers,
+} from '../domains/model/randomizer/items'
 
 export default function randomize(
   wasm: any,
@@ -18,6 +23,12 @@ export default function randomize(
   options: {
     seed: string;
     easyMode: boolean;
+    tabletSave: boolean;
+    grailStart: boolean;
+    scannerStart: boolean;
+    gameMasterStart: boolean;
+    readerStart: boolean;
+    autoRegistration: boolean;
   },
 ) {
   console.time('readScriptDat');
@@ -33,15 +44,43 @@ export default function randomize(
     console.time('addItems');
     script.addStartingItems(
       [
-        // equipmentNumbers.holyGrail,
-        100,
-        // 102,
+        equipmentNumbers.holyGrail,
+        100 + romNumbers.gameMaster,
+        100 + romNumbers.glyphReader,
       ],
       [
-        // subWeaponNumbers.handScanner,
+        subWeaponNumbers.handScanner,
       ],
+      options.easyMode,
+      options.grailStart,
+      options.scannerStart,
+      options.gameMasterStart,
+      options.readerStart,
     );
     console.timeEnd('addItems');
+  }
+  else if (options.grailStart || options.scannerStart || options.gameMasterStart || options.readerStart) {
+    console.time('addItems');
+    script.addStartingItems(
+      [],
+      [],
+      options.easyMode,
+      options.grailStart,
+      options.scannerStart,
+      options.gameMasterStart,
+      options.readerStart,
+    );
+    console.timeEnd('addItems');
+  }
+  if (options.tabletSave) {
+    console.time('tabletSave');
+    script.tabletSave(options.easyMode || options.gameMasterStart);
+	console.timeEnd('tabletSave');
+  }
+  if (options.autoRegistration) {
+      console.time('autoRegistration');
+      script.autoRegistration();
+      console.timeEnd('autoRegistration');
   }
   console.time('build');
   const output = buildScriptDat(wasm, script);

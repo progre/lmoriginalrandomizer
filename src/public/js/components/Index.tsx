@@ -16,6 +16,12 @@ export default function Index(props: {
   seed: string;
   installDirectory: string;
   easyMode: boolean;
+  tabletSave: boolean;
+  grailStart: boolean;
+  scannerStart: boolean;
+  gameMasterStart: boolean;
+  readerStart: boolean;
+  autoRegistration: boolean;
   snackbar: string;
   isProcessingApply: boolean;
   isProcessingRestore: boolean;
@@ -23,6 +29,12 @@ export default function Index(props: {
   onChangeSeed(seed: string): void;
   onChangeInstallDirectory(path: string): void;
   onChangeEasyMode(easyMode: boolean): void;
+  onChangeTabletSave(tabletSave: boolean): void;
+  onChangeGrailStart(grailStart: boolean): void;
+  onChangeScannerStart(scannerStart: boolean): void;
+  onChangeGameMasterStart(gameMasterStart: boolean): void;
+  onChangeReaderStart(readerStart: boolean): void;
+  onChangeAutoRegistration(autoRegistration: boolean): void;
   onClickApply(): void;
   onClickRestore(): void;
   onCloseSnackbar(event: React.SyntheticEvent<any>, reason?: string): void;
@@ -112,10 +124,23 @@ function Configs(props: {
   seed: string;
   installDirectory: string;
   easyMode: boolean;
+  tabletSave: boolean;
+  grailStart: boolean;
+  scannerStart: boolean;
+  gameMasterStart: boolean;
+  readerStart: boolean;
+  autoRegistration: boolean;
 
   onChangeSeed(seed: string): void;
   onChangeInstallDirectory(path: string): void;
   onChangeEasyMode(easyMode: boolean): void;
+  onChangeTabletSave(tabletSave: boolean): void;
+  onChangeGrailStart(grailStart: boolean): void;
+  onChangeScannerStart(scannerStart: boolean): void;
+  onChangeGameMasterStart(gameMasterStart: boolean): void;
+  onChangeReaderStart(readerStart: boolean): void;
+  
+  onChangeAutoRegistration(autoRegistration: boolean): void;
 }) {
   return (
     <Paper elevation={1} style={{ flex: 1, padding: 16 }}>
@@ -144,7 +169,71 @@ function Configs(props: {
             onChange={buildOnChangeCheckbox(props.onChangeEasyMode)}
           />
         }
-        label="Starting item (Game Master)"
+        label="Xelpud Care Package"
+      />
+      <FormControlLabel
+        control={
+          <Checkbox
+            color="primary"
+            checked={props.tabletSave}
+            onChange={buildOnChangeCheckbox(props.onChangeTabletSave)}
+          />
+        }
+        label="↓ to save at Grail tablets"
+      />
+      <FormControlLabel
+        control={
+          <Checkbox
+            color="primary"
+            checked={props.autoRegistration}
+            onChange={buildOnChangeCheckbox(props.onChangeAutoRegistration) }
+          />
+        }
+        label="Automatic Grail Tablet Registration"
+	/>
+      <Typography style={{ fontSize: 14 }}>
+        <hr />
+        Starting Items
+      </Typography>
+      <FormControlLabel
+        control={
+          <Checkbox
+            color="primary"
+            checked={props.grailStart}
+            onChange={buildOnChangeCheckbox(props.onChangeGrailStart) }
+          />
+        }
+        label="Holy Grail"
+      />
+      <FormControlLabel
+        control={
+          <Checkbox
+            color="primary"
+            checked={props.scannerStart}
+            onChange={buildOnChangeCheckbox(props.onChangeScannerStart) }
+          />
+        }
+        label="Hand Scanner"
+      />
+      <FormControlLabel
+        control={
+          <Checkbox
+            color="primary"
+            checked={props.gameMasterStart}
+            onChange={buildOnChangeCheckbox(props.onChangeGameMasterStart) }
+          />
+        }
+        label="Game Master"
+      />
+      <FormControlLabel
+        control={
+          <Checkbox
+            color="primary"
+            checked={props.readerStart}
+            onChange={buildOnChangeCheckbox(props.onChangeReaderStart) }
+          />
+        }
+        label="Glyph Reader"
       />
     </Paper>
   );

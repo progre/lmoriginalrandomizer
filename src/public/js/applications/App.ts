@@ -20,6 +20,12 @@ export default class App {
     options: {
       seed: string;
       easyMode: boolean;
+      tabletSave: boolean;
+      grailStart: boolean;
+      scannerStart: boolean;
+      gameMasterStart: boolean;
+      readerStart: boolean;
+      autoRegistration: boolean;
     },
   ) {
     const targetFilePath = `${installDirectory}/data/script.dat`;

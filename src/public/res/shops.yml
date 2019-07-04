@@ -15,21 +15,21 @@
 - names: toukenAmmo, spearAmmo, flareGunAmmo
   requirements:
     - shuriken, shurikenAmmo
+    - pistol, ammunition # pistol can reach
+    - bomb, bombAmmo # bombs can reach
     - feather
 - names: heatproofCase, divinerSensation, weights
 - names: ammunition, bombAmmo, shurikenAmmo
   requirements:
-    - deathSeal
+    - deathSeal, feather # need feather
 
 # Spring in the Sky
 - names: weights, shurikenAmmo, toukenAmmo
   requirements:
-    - sacredOrb:2, originSeal
-    - scalesphere, originSeal
+    - event:SpringElevator, originSeal # more varied ways to reach
 - names: shellHorn, finder, castlevania
   requirements:
-    - sacredOrb:2, originSeal, divinerSensation, event:qBert
-    - scalesphere, originSeal, divinerSensation, event:qBert
+    - event:SpringElevator, originSeal, divinerSensation, event:qBert, msx2 # need msx2
 
 # Inferno Cavern
 - names: mahjongWizard, spearAmmo, toukenAmmo
@@ -50,8 +50,7 @@
 - names: helmet, bombAmmo, fakeHandScanner
 - names: lampOfTime, shurikenAmmo, toukenAmmo
   requirements:
-    - event:releasedTwins, bomb
-    - event:releasedTwins, feather
+    - event:releasedTwins, feather, boots # need feather and boots. puzzle is unsolvable so bombs not needed
 
 # Twin Labyrinths (back)
 - names: scriptures, bombAmmo, spearAmmo
@@ -69,19 +68,20 @@
 # Graveyard of the Giants
 - names: spearAmmo, fakeSilverShield, weights
   requirements:
-    - event:reachedFrontOfGraveyardOfTheGiants
+    - event:reachedLiarOfGraveyardOfTheGiants # need to reach Liar shop not just front door
 
 # Tower of the Goddess
 
 # Temple of Moonlight
 - names: bracelet, shurikenAmmo, ammunition
   requirements:
-    - event:reachedFrontOfTempleOfMoonlight, bomb, bombAmmo
+    - event:reachedFrontOfTempleOfMoonlight, bomb, bombAmmo, event:surviveAnubis # survive anubis
 
 # Tower of Ruin
 - names: knightmare, bombAmmo, flareGunAmmo
   requirements:
     - event:reachedFrontOfTowerOfRuin, katana, feather
+    - event:reachedFrontOfTowerOfRuin, katana, boots, grappleClaw # can reach with boots and grapple claw
 
 # Chamber of Birth
 - names: ammunition, ankhJewel:chamberOfBirth, weights

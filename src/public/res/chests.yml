@@ -24,7 +24,7 @@
     - serpentStaff, knife
     - serpentStaff, axe
     - serpentStaff, katana
-    - serpentStaff, castlevania, mahjongWizard
+    - serpentStaff, castlevania, mahjongWizard, msx2 # need msx2 to equip rom combos
 - name: shellHorn
 # skip birthSeal
 - name: sacredOrb:surface
@@ -55,17 +55,14 @@
 # Spring in the Sky
 - name: sacredOrb:springInTheSky
   requirements:
-    - lifeSeal
+    - birthSeal # life seal is from the remake
 - name: glove
   requirements:
     - event:floodedSpringInTheSky
 - name: map:springInTheSky
-  requirements:
-    - helmet
-    - boots
 - name: scalesphere
   requirements:
-    - sacredOrb:2, helmet, originSeal
+    - event:SpringElevator, originSeal # new event allows more varied options for getting up
 # skip originSeal
 # skip ankhJewel
 
@@ -80,7 +77,9 @@
 # Chamber of Extinction
 - name: sacredOrb:chamberOfExtinction
   requirements:
-    - event:lightedUpChamberOfExtinction
+    - event:lightedUpChamberOfExtinction, feather # need a way out
+    - event:lightedUpChamberOfExtinction, originSeal # need a way out
+    - event:lightedUpChamberOfExtinction, holyGrail # need a way out
 - name: map:chamberOfExtinction
   requirements:
     - event:lightedUpChamberOfExtinction
@@ -90,8 +89,8 @@
 - name: map:endlessCorridor
 - name: twinStatue
   requirements:
-    - keyOfEternity, handScanner, glyphReader, feather
-    - keyOfEternity, handScanner, glyphReader, grappleClaw
+    - keyOfEternity, feather
+    - keyOfEternity, grappleClaw
 
 # Shrine of the Mother
 - name: crystalSkull
@@ -102,7 +101,7 @@
     - event:reachedFrontOfShrineOfTheMother, originSeal, birthSeal, lifeSeal, deathSeal
 - name: diary
   requirements:
-    - event:reachedFrontOfShrineOfTheMother, talisman, lifeSeal, lampOfTime
+    - event:reachedFrontOfShrineOfTheMother, talisman, lifeSeal, lampOfTime, feather # need feather
 - name: map:shrineOfTheMother
   requirements:
     - event:releasedTwins, dragonBone
@@ -125,24 +124,26 @@
 # Gate of Illusion
 - name: keyOfEternity
   requirements:
-    - event:reachedElevatorOfGateOfIllusion, axe
+    - event:reachedElevatorOfGateOfIllusion, event:miniDoll, event:escapeShu # need mini doll and a way to get out from Shu area
 - name: protectiveClothes
   requirements:
-    - event:reachedElevatorOfGateOfIllusion, katana, divinerSensation, event:qBert
+    - event:reachedElevatorOfGateOfIllusion, katana, divinerSensation, event:qBert, msx2 # need msx2 for diviner sensation
 - name: map:gateOfIllusion
   requirements:
     - event:reachedFrontOfGateOfIllusion
 - name: cogOfTheSoul
   requirements:
-    - event:reachedBackDoorOfGateOfIllusion, event:reachedElevatorOfGateOfIllusion, lampOfTime
+    - event:reachedBackDoorOfGateOfIllusion, event:reachedElevatorOfGateOfIllusion, lampOfTime, event:escapeShu # need to kill Shu to open chest
 
 # Graveyard of the Giants
 - name: contra
   requirements:
-    - event:reachedBackDoorOfGraveyardOfTheGiants
+    - event:reachedLiarOfGraveyardOfTheGiants
+    - event:reachedFrontOfTempleOfMoonlight, katana, keySword, knife, event:subWeaponWallForward
 - name: map:graveyardOfTheGiants
   requirements:
-    - event:reachedFrontOfGraveyardOfTheGiants
+    - event:reachedFrontOfGraveyardOfTheGiants, feather
+    - event:reachedFrontOfGraveyardOfTheGiants, boots
 - name: gauntlet
   requirements:
     - event:reachedFrontOfGraveyardOfTheGiants, birthSeal, grappleClaw
@@ -153,21 +154,23 @@
     - event:reachedTowerOfTheGoddess, planeModel, pistol, ammunition
 - name: planeModel
   requirements:
-    - event:reachedTowerOfTheGoddess, feather, grappleClaw
+    - event:reachedTowerOfTheGoddess, feather, grappleClaw, boots, handScanner, glyphReader # need boots to climb tower. need to flood tower to open chest
 - name: map:TowerOfTheGoddess
   requirements:
     - event:reachedTowerOfTheGoddess
 - name: gradius
   requirements:
-    - event:reachedTowerOfTheGoddess, feather
+    - event:reachedTowerOfTheGoddess # do not need feather
 - name: eyeOfTruth
   requirements:
-    - event:reachedTowerOfTheGoddess
+    - event:reachedLowerOfChamberOfBirth # need to reach entrance to lower birth to place weights
 
 # Temple of Moonlight
 - name: bookOfTheDead
   requirements:
-    - event:reachedFrontOfTempleOfMoonlight, birthSeal
+    - event:reachedFrontOfTempleOfMoonlight, birthSeal, feather, event:surviveAnubis # need a way out and survive anubis
+    - event:reachedFrontOfTempleOfMoonlight, birthSeal, grappleClaw, event:surviveAnubis
+    - event:reachedFrontOfTempleOfMoonlight, birthSeal, holyGrail, event:surviveAnubis
 - name: iceCape
   requirements:
     - event:reachedGrailOfTempleOfMoonlight
@@ -180,7 +183,8 @@
 # skip open from front
 - name: ocarina
   requirements:
-    - flareGun, womanStatue
+    - flareGun, womanStatue, feather, event:escapeFromTempleOfMoonlight # need a way out of moonlight
+    - flareGun, womanStatue, grappleClaw, event:escapeFromTempleOfMoonlight
 - name: serpentStaff
   requirements:
     - event:reachedFrontOfTempleOfMoonlight, grappleClaw
@@ -189,7 +193,7 @@
 # Tower of Ruin
 - name: djedPillar
   requirements:
-    - event:reachedBackDoorOfTowerOfRuin
+    - event:reachedBackDoorOfTowerOfRuin, ocarina, event:mulanaTalisman # need to talk to sage in spring. need mulana talisman to get item
 - name: map:towerOfRuin
   requirements:
     - event:reachedFrontOfTowerOfRuin
@@ -208,6 +212,7 @@
 - name: womanStatue
   requirements:
     - event:reachedUpperOfChamberOfBirth, feather
+    - event:reachedUpperOfChamberOfBirth, holyGrail
 - name: map:chamberOfBirth
   requirements:
     - event:reachedLowerOfChamberOfBirth
@@ -218,10 +223,10 @@
 # Dimensional Corridor
 - name: magatamaJewel
   requirements:
-    - event:defeatedTiamat
+    - event:defeatedTiamat, event:mulanaTalisman # need mulana talisman to get item
 - name: sacredOrb:dimensionalCorridor
   requirements:
-    - event:reachedDimensionalCorridor, feather, lampOfTime, grappleClaw
+    - event:reachedDimensionalCorridor, feather, lampOfTime, sacredOrb:2 # do not need grapple claw. should have some health to beat bosses
 # skip ankhJewel
 - name: map:dimensionalCorridor
   requirements:
